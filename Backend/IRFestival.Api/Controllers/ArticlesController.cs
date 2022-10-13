@@ -22,6 +22,7 @@ namespace IRFestival.Api.Controllers
         {
             var dummyArticle = new Article()
             {
+                Id = "test",
                 Date = DateTime.Now,
                 Message = "Test Message",
                 Status = "Status",
