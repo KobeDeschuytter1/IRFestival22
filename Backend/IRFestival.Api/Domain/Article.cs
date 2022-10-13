@@ -6,7 +6,7 @@ namespace IRFestival.Api.Domain
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
-        [JsonProperty(PropertyName = "Tag)]
+        [JsonProperty(PropertyName = "Tag")]
         public string Tag { get; set; }
         [JsonProperty(PropertyName = "Title")]
         public string Title { get; set; }
