@@ -10,6 +10,8 @@ namespace IRFestival.Api.Domain
         public string Tag { get; set; }
         [JsonProperty(PropertyName = "Title")]
         public string Title { get; set; }
+        [JsonProperty(PropertyName = "SubTitle")]
+        public string SubTitle { get; set; }
         [JsonProperty(PropertyName = "Message")]
         public string Message { get; set; }
         [JsonProperty(PropertyName = "ImagePath")]
