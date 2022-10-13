@@ -19,7 +19,6 @@ namespace IRFestival.Api.Controllers
         {
 
             _cosmosClient = new CosmosClient(configuration.GetConnectionString("CosmosConnection"));
-
             _websiteArticlesContainer = _cosmosClient.GetContainer("IRFestivalArticles", "WebsiteArticles");
 
 
@@ -31,7 +30,7 @@ namespace IRFestival.Api.Controllers
         {
             var dummyArticle = new Article()
             {
-                Id = "test4",
+                Id = "test",
                 Date = DateTime.Now,
                 Message = "Test Message",
                 Status = "Unbuplished",

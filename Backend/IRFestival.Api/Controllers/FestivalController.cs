@@ -21,13 +21,14 @@ namespace IRFestival.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(Schedule))]
         public async Task<ActionResult> GetLineUp()
         {
-            var lineUp = await _ctx.Schedules.Include(x => x.Items)
-                                                          .ThenInclude(x => x.Artist)
-                                                          .Include(x => x.Items)
-                                                          .ThenInclude(x => x.Stage)
-                                                          .FirstOrDefaultAsync();
-
-            return Ok(lineUp);
+            //var lineUp = await _ctx.Schedules.Include(x => x.Items)
+            //                                              .ThenInclude(x => x.Artist)
+            //                                              .Include(x => x.Items)
+            //                                              .ThenInclude(x => x.Stage)
+            //                                              .FirstOrDefaultAsync();
+            throw new ApplicationException("LineUp failed!");
+            return Ok(FestivalDataSource.Current.LineUp);
+            //return Ok(lineUp);
         }
 
         [HttpGet("Artists")]
