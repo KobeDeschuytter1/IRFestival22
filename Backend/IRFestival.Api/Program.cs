@@ -1,4 +1,6 @@
+using IRFestival.Api.Data;
 using IRFestival.Api.Options;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.Configure<AppSettingsOptions>(builder.Configuration.GetSection("AppSettings"));
+
+builder.Services.AddDbContext<FestivalDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+    sqlServerOptionsAction: sqloptions =>
+    {
+        sqloptions.EnableRetryOnFailure(
+            maxRetryCount: 10,
+            maxRetryDelay: TimeSpan.FromSeconds(30),
+            errorNumbersToAdd: null);
+    }));
+
+
 
 var app = builder.Build();
 
