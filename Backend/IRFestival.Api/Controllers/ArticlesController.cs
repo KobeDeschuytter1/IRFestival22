@@ -4,7 +4,9 @@ using Microsoft.Azure.Cosmos;
 
 namespace IRFestival.Api.Controllers
 {
-    public class ArticlesController : Controller
+    [Route("api/[Controller]")]
+    [ApiController]
+    public class ArticlesController : ControllerBase
     {
 
         private CosmosClient _cosmosClient { get; set; }
