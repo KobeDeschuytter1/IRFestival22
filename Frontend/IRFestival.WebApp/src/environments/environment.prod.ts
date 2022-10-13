@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   festivalName: 'IRFestival',
-  apiBaseUrl: 'https://irfestivalapikds.azurewebsites.net/api/settings',
+  apiBaseUrl: 'https://irfestivalapikds.azurewebsites.net/api/',
 };
