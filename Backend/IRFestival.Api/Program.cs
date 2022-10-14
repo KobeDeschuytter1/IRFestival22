@@ -1,3 +1,4 @@
+using Azure.Identity;
 using Azure.Storage;
 using Azure.Storage.Blobs;
 using IRFestival.Api.Common;
@@ -38,6 +39,11 @@ builder.Services.AddDbContext<FestivalDbContext>(options =>
     }));
 builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 
+
+builder.Configuration.AddAzureKeyVault(
+
+    new Uri($"https://irfestivalkeyvaultkds.vault.azure.net/"),
+    new DefaultAzureCredential(new DefaultAzureCredentialOptions()));
 
 
 var app = builder.Build();
