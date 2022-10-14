@@ -5,7 +5,7 @@ using IRFestival.Api.Common;
 using IRFestival.Api.Data;
 using IRFestival.Api.Options;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.FeatureManagement;
 
 var builder = WebApplication.CreateBuilder(args);
 var storageSharedKeyCredential = new StorageSharedKeyCredential(
@@ -39,6 +39,8 @@ builder.Services.AddDbContext<FestivalDbContext>(options =>
     }));
 builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 
+builder.Configuration.AddAzureAppConfiguration(options => options.Connect(builder.Configuration.GetConnectionString("AppConfigConnection")).UseFeatureFlags());
+builder.Services.AddFeatureManagement();
 
 builder.Configuration.AddAzureKeyVault(
 
