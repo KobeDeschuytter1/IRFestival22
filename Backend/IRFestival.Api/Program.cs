@@ -5,12 +5,13 @@ using IRFestival.Api.Data;
 using IRFestival.Api.Options;
 using Microsoft.EntityFrameworkCore;
 
-var builder = WebApplication.CreateBuilder(args);
 
+var builder = WebApplication.CreateBuilder(args);
 var storageSharedKeyCredential = new StorageSharedKeyCredential(
-        builder.Configuration.GetValue<String>("Storage:AccoutnName"),
-        builder.Configuration.GetValue<String>("Storage:AccountKey"));
+        builder.Configuration.GetValue<string>("Storage:AccountName"),
+        builder.Configuration.GetValue<string>("Storage:AccountKey"));
 string blobUri = "https://" + storageSharedKeyCredential.AccountName + ".blolb.core.windows.net";
+
 builder.Services.AddSingleton(blobUri);
 builder.Services.AddSingleton(p => new BlobServiceClient(new Uri(blobUri), storageSharedKeyCredential));
 builder.Services.AddSingleton(p => storageSharedKeyCredential);
